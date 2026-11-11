@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+
+# Environment files hold real credentials - never commit them
+.env
+.env.*
+!.env.example
+
+*.log
+.DS_Store
+Thumbs.db
+
+# Vitest cache
+.vitest/

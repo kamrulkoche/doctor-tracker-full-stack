@@ -1,0 +1,225 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.985 0.003 240);
+  --foreground: oklch(0.21 0.02 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.02 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.02 250);
+  --primary: oklch(0.48 0.078 200);
+  --primary-foreground: oklch(0.985 0.005 200);
+  --secondary: oklch(0.96 0.006 240);
+  --secondary-foreground: oklch(0.27 0.02 250);
+  --muted: oklch(0.965 0.005 240);
+  --muted-foreground: oklch(0.5 0.02 250);
+  --accent: oklch(0.95 0.02 200);
+  --accent-foreground: oklch(0.32 0.052 200);
+  --destructive: oklch(0.53 0.2 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.915 0.008 240);
+  --input: oklch(0.82 0.012 240);
+  --ring: oklch(0.58 0.092 200);
+
+  --success: oklch(0.5 0.12 155);
+  --success-foreground: oklch(0.985 0 0);
+  --warning: oklch(0.52 0.11 70);
+  --warning-foreground: oklch(0.985 0 0);
+  --info: oklch(0.5 0.13 250);
+  --info-foreground: oklch(0.985 0 0);
+
+  --chart-1: oklch(0.6 0.095 200);
+  --chart-2: oklch(0.4 0.15 268);
+  --chart-3: oklch(0.67 0.135 75);
+  --chart-4: oklch(0.52 0.16 30);
+  --chart-5: oklch(0.36 0.09 340);
+  --chart-other: oklch(0.72 0.012 250);
+  --chart-grid: oklch(0.915 0.008 240);
+
+  --sidebar: oklch(0.975 0.004 240);
+  --sidebar-foreground: oklch(0.21 0.02 250);
+  --sidebar-primary: oklch(0.48 0.078 200);
+  --sidebar-primary-foreground: oklch(0.985 0.005 200);
+  --sidebar-accent: oklch(0.94 0.02 200);
+  --sidebar-accent-foreground: oklch(0.3 0.048 200);
+  --sidebar-border: oklch(0.915 0.008 240);
+  --sidebar-ring: oklch(0.58 0.092 200);
+}
+
+.dark {
+  --background: oklch(0.17 0.012 250);
+  --foreground: oklch(0.95 0.005 240);
+  --card: oklch(0.21 0.014 250);
+  --card-foreground: oklch(0.95 0.005 240);
+  --popover: oklch(0.23 0.014 250);
+  --popover-foreground: oklch(0.95 0.005 240);
+  --primary: oklch(0.72 0.1 195);
+  --primary-foreground: oklch(0.17 0.02 200);
+  --secondary: oklch(0.27 0.015 250);
+  --secondary-foreground: oklch(0.95 0.005 240);
+  --muted: oklch(0.25 0.014 250);
+  --muted-foreground: oklch(0.71 0.02 250);
+  --accent: oklch(0.29 0.035 200);
+  --accent-foreground: oklch(0.9 0.05 195);
+  --destructive: oklch(0.7 0.17 25);
+  --destructive-foreground: oklch(0.17 0.02 25);
+  --border: oklch(0.3 0.015 250);
+  --input: oklch(0.36 0.016 250);
+  --ring: oklch(0.72 0.1 195);
+
+  --success: oklch(0.74 0.14 155);
+  --success-foreground: oklch(0.17 0.02 250);
+  --warning: oklch(0.8 0.14 80);
+  --warning-foreground: oklch(0.17 0.02 250);
+  --info: oklch(0.74 0.11 245);
+  --info-foreground: oklch(0.17 0.02 250);
+
+  --chart-1: oklch(0.78 0.11 195);
+  --chart-2: oklch(0.58 0.16 268);
+  --chart-3: oklch(0.84 0.13 82);
+  --chart-4: oklch(0.68 0.16 30);
+  --chart-5: oklch(0.52 0.11 340);
+  --chart-other: oklch(0.5 0.015 250);
+  --chart-grid: oklch(0.3 0.015 250);
+
+  --sidebar: oklch(0.19 0.013 250);
+  --sidebar-foreground: oklch(0.95 0.005 240);
+  --sidebar-primary: oklch(0.72 0.1 195);
+  --sidebar-primary-foreground: oklch(0.17 0.02 200);
+  --sidebar-accent: oklch(0.27 0.03 200);
+  --sidebar-accent-foreground: oklch(0.9 0.05 195);
+  --sidebar-border: oklch(0.3 0.015 250);
+  --sidebar-ring: oklch(0.72 0.1 195);
+}
+
+@theme inline {
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+  --font-heading: var(--font-plex-sans);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-other: var(--chart-other);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+  }
+  body {
+    @apply overflow-x-hidden bg-background text-sm text-foreground antialiased;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  /* Keyboard focus is always visible, including on plain links. */
+  a:focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+/* Toasts are card-styled (design system 6.13). */
+.cn-toast {
+  @apply rounded-lg! border! border-border! bg-popover! text-popover-foreground! shadow-lg!;
+}
+.cn-toast[data-type="success"] [data-icon] {
+  color: var(--success);
+}
+.cn-toast[data-type="error"] [data-icon] {
+  color: var(--destructive);
+}
+
+/*
+ * Public website backdrops. Hairline grid in the border token plus one soft primary glow,
+ * faded out with a mask so it never competes with content. Both adapt to dark mode
+ * through the tokens.
+ */
+.mk-hero {
+  background-color: var(--background);
+}
+.mk-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 30%, transparent 75%);
+  opacity: 0.6;
+}
+.mk-hero::after {
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 60%;
+  height: 80%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--primary) 12%, transparent), transparent);
+}
+.mk-cta-pattern {
+  background-image: radial-gradient(color-mix(in oklch, var(--primary-foreground) 18%, transparent) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to left, black, transparent 70%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

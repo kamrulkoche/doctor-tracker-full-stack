@@ -1,0 +1,40 @@
+# Local development infrastructure for Doctor Tracker.
+# MongoDB only - the frontend and backend run directly on the host.
+# Run from doctor-tracker-backend/. Set the MONGO_* variables in .env before `docker compose up -d mongodb`.
+name: doctor-tracker
+
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: doctor-tracker-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:?Set MONGO_INITDB_ROOT_USERNAME in .env}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:?Set MONGO_INITDB_ROOT_PASSWORD in .env}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE:-doctor_tracker}
+    ports:
+      # Bound to loopback only: the database is never reachable from the network.
+      - "127.0.0.1:${MONGO_PORT:-27017}:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - doctor-tracker
+    healthcheck:
+      # Authenticated ping: healthy only when mongod accepts authenticated commands.
+      test:
+        [
+          "CMD-SHELL",
+          "mongosh --quiet --host 127.0.0.1 --port 27017 -u \"$$MONGO_INITDB_ROOT_USERNAME\" -p \"$$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval \"db.adminCommand('ping').ok\" | grep -q 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+volumes:
+  # Named volume: survives `docker compose down`, removed only by `docker compose down -v`.
+  mongodb_data:
+
+networks:
+  doctor-tracker:
+    driver: bridge
