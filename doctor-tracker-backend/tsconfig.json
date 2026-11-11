@@ -19,5 +19,5 @@
     "resolveJsonModule": true,
     "noEmit": true
   },
-  "include": ["src", "tests", "vitest.config.mts"]
+  "include": ["src", "api", "tests", "vitest.config.mts"]
 }

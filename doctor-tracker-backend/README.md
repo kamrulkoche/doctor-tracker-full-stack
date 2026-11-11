@@ -8,6 +8,7 @@ over REST. This server is the only component that connects to MongoDB.
 
 ---
 
+
 ## Contents
 
 1. [Tech stack](#1-tech-stack)
