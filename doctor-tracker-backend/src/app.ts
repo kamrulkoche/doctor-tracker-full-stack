@@ -58,6 +58,11 @@ export function createApp(): Express {
   api.use('/patients', patientRouter);
   api.use('/dashboard', dashboardRouter);
 
+  // Bare alias for load balancers and uptime monitors that probe /health by convention.
+  app.use('/health', (_req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store');
+    next();
+  }, healthRouter);
   app.use('/api', api);
   app.use(notFoundHandler);
   app.use(errorHandler);

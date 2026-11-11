@@ -20,6 +20,13 @@ describe('GET /api/health', () => {
     expect(typeof health.uptime).toBe('number');
     expect(new Date(health.timestamp).toISOString()).toBe(health.timestamp);
   });
+
+  it('is also served at the bare /health alias', async () => {
+    const response = await request(app).get('/health').expect(200);
+
+    expect(response.headers['cache-control']).toBe('no-store');
+    expect(data<Health>(response).status).toBe('ok');
+  });
 });
 
 describe('platform behaviour', () => {
